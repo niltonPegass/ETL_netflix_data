@@ -32,7 +32,7 @@ else:
       # leio o arquivo de excel
       df_temp = pd.read_excel(excel_file)
           
-      #pegar o nome do arquivo
+      # pegar o nome do arquivo
       file_name = os.path.basename(excel_file)
           
       df_temp['filename'] = file_name
@@ -64,19 +64,19 @@ else:
 
   if dfs_primary:
 
-    #concatena todas as tabelas salvas no dfs_primary em uma unica tabela
+    # concatena todas as tabelas salvas no dfs_primary em uma unica tabela
     result = pd.concat(dfs_primary, ignore_index=True)
 
-    #caminho de saída
+    # caminho de saída
     output_file = os.path.join(folder_path_ready, 'netflix_data_v1.xlsx')
 
-    #configurou o motor de escrita
+    # configurou o motor de escrita
     writer = pd.ExcelWriter(output_file, engine='xlsxwriter')
 
     # leva os dados do resultado a serem escritos no motor de excel configurado
     result.to_excel(writer, index=False)
 
-    #salva o arquivo de excel
+    # salva o arquivo de excel
     writer._save()
     print(f'\n>> arquivo salvo em: \n>> {folder_path_ready}\n')
     print(df_temp)
